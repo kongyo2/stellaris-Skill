@@ -11,6 +11,7 @@ Stellaris mod開発を支援するスキル。CWToolsバリデーションルー
 
 PDXスクリプトの基礎を理解する必要がある場合に参照:
 - **[1.基礎概念.md](references/1.基礎概念.md)**: Clausewitz構文、データ型、演算子、エンコーディング規約
+- **[2.条件式と論理演算.md](references/2.条件式と論理演算.md)**: 条件式(Triggers)、論理演算子(AND/OR/NOT/NOR/NAND/calc_true_if)、ド・モルガンの法則
 
 ---
 
