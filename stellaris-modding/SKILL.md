@@ -5,7 +5,12 @@ description: Stellaris modding support skill providing version information, CWTo
 
 # Stellaris Modding
 
-[TODO: Overview and workflow sections will be added later]
+Stellaris mod開発を支援するスキル。CWToolsバリデーションルールへの動的アクセス、PDXスクリプト構文の検証、バージョン情報の取得を提供。
+
+## References
+
+PDXスクリプトの基礎を理解する必要がある場合に参照:
+- **[1.基礎概念.md](references/1.基礎概念.md)**: Clausewitz構文、データ型、演算子、エンコーディング規約
 
 ---
 
