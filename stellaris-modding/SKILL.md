@@ -1,160 +1,63 @@
 ---
 name: stellaris-modding
-description: |
-  Stellaris mod開発支援スキル。CWToolsバリデーションルール、ゲームバージョン情報、PDXスクリプト構文リファレンスを提供。
-
-  Use when:
-  - Creating or editing Stellaris mods (イベント、テクノロジー、建造物、特性など)
-  - Writing PDX script code (triggers, effects, scopes, modifiers)
-  - Checking if a trigger/effect/scope exists and how to use it
-  - Looking up correct syntax for Stellaris scripting
-  - Validating mod elements against CWTools rules
-  - Getting current Stellaris game version info
-  - Understanding Stellaris modding concepts (スコープ、条件式、on_action等)
+description: Use when creating, editing, or reviewing Stellaris mods and you need self-contained guidance on Clausewitz/PDX script structure, file placement, scopes, triggers, effects, on_actions, events, technologies, buildings, districts, POP/jobs, traits, governments, relics, archaeology, decisions, special projects, situations, megastructures, components, zones, or vanilla-aligned conventions informed by CWTools and vanilla Stellaris.
 ---
 
 # Stellaris Modding
 
-Stellaris mod開発を支援。CWToolsバリデーションルールへの動的アクセスとPDXスクリプトリファレンスを提供。
+Stellaris mod 制作のための documents-only な self-contained reference skill。
+bundled `references/` だけで判断できるように構成している。ローカル環境の追加資料、補助ツール、外部サイトの存在は前提にしない。ユーザーが別途ファイルを与えた場合だけ、それを追加の一次資料として扱う。
 
-## クイックリファレンス
+## 基本方針
 
-### Mod作成のための基礎知識
+1. まず対象ドメインを決める。
+2. そのドメインに最も近い reference を先に読む。
+3. スコープや論理条件が怪しいときは、必ず基礎 reference に戻る。
+4. 構文上は書けそうでも、実運用はバニラ慣習に従う。
 
-| トピック | リファレンス | 内容 |
-|---------|-------------|------|
-| PDXスクリプト基礎 | [1.基礎概念.md](references/1.基礎概念.md) | Clausewitz構文、データ型、エンコーディング |
-| 条件判定 | [2.条件式と論理演算.md](references/2.条件式と論理演算.md) | AND/OR/NOT、複合条件 |
-| コンテキスト切替 | [3.スコープ.md](references/3.スコープ.md) | root/from/prev、スコープチェーン |
+## 読み始め
 
-### ゲームコンテンツ作成
+### 基礎
 
-| トピック | リファレンス | 内容 |
-|---------|-------------|------|
-| イベント | [5.イベント.md](references/5.イベント.md) | country_event、選択肢、チェーン |
-| アノマリー | [4.アノマリー.md](references/4.アノマリー.md) | 調査イベント、発見システム |
-| テクノロジー | [6.テクノロジー.md](references/6.テクノロジー.md) | 研究ツリー、解除条件 |
-| オンアクション | [7.オンアクション.md](references/7.オンアクション.md) | ゲームイベントフック |
-| エフェクト | [8.エフェクト.md](references/8.エフェクト.md) | ゲーム状態変更コマンド |
+| トピック | リファレンス | 用途 |
+|---|---|---|
+| PDXスクリプト基礎 | [1.基礎概念](references/1.基礎概念.md) | 構文、エンコーディング、コメント、変数 |
+| 条件式と論理演算 | [2.条件式と論理演算](references/2.条件式と論理演算.md) | AND/OR/NOT/NOR/NAND、`calc_true_if` |
+| スコープ | [3.スコープ](references/3.スコープ.md) | `root`、`from`、`prev`、主要スコープ遷移 |
 
-### 帝国・惑星システム
+### 主要コンテンツ
 
-| トピック | リファレンス | 内容 |
-|---------|-------------|------|
-| 政府 | [9.政府.md](references/9.政府.md) | 政体、国是、権威 |
-| 遺物・考古学 | [10.遺物・考古学サイト.md](references/10.遺物・考古学サイト.md) | 発掘、アーティファクト |
-| POP・職業 | [11.POPと職業.md](references/11.POPと職業.md) | 人口、雇用、階層 |
-| 特性 | [12.特性.md](references/12.特性.md) | 種族特性、リーダー特性 |
-| 惑星地形 | [13.惑星地形と惑星補正.md](references/13.惑星地形と惑星補正.md) | 地形タイプ、惑星補正 |
-| 建造物 | [14.建造物とディストリクト.md](references/14.建造物とディストリクト.md) | 惑星建造物、区域 |
-| 惑星決定 | [15.惑星ディシジョン.md](references/15.惑星ディシジョン.md) | プレイヤー決定アクション |
-| 特別計画 | [16.スペシャルプロジェクト.md](references/16.スペシャルプロジェクト.md) | 研究プロジェクト |
+| トピック | リファレンス | 用途 |
+|---|---|---|
+| アノマリー | [4.アノマリー](references/4.アノマリー.md) | anomaly category、`on_success`、anomaly event |
+| イベント | [5.イベント](references/5.イベント.md) | event type、`option`、`after`、継承 |
+| テクノロジー | [6.テクノロジー](references/6.テクノロジー.md) | `potential`、`weight_modifier`、`technology_swap` |
+| オンアクション | [7.オンアクション](references/7.オンアクション.md) | `events`、`random_events`、スコープ一覧 |
+| エフェクト | [8.エフェクト](references/8.エフェクト.md) | 制御構文、生成、変数、反復、scripted effect |
+| 政府 | [9.政府](references/9.政府.md) | authority、civic、origin、government |
+| 遺物・考古学 | [10.遺物・考古学サイト](references/10.遺物・考古学サイト.md) | relic、artifact action、archaeological site |
+| POPと職業 | [11.POPと職業](references/11.POPと職業.md) | pop category、job、`swappable_data`、経済カテゴリ連携 |
+| 特性 | [12.特性](references/12.特性.md) | species trait、leader trait、`replace_traits` |
+| 惑星地形と惑星補正 | [13.惑星地形と惑星補正](references/13.惑星地形と惑星補正.md) | deposit、blocker、planet modifier |
+| 建造物とディストリクト | [14.建造物とディストリクト](references/14.建造物とディストリクト.md) | building、district、`building_sets`、`convert_to` |
+| 惑星ディシジョン | [15.惑星ディシジョン](references/15.惑星ディシジョン.md) | `potential`、`allow`、`effect`、`resources` |
+| スペシャルプロジェクト | [16.スペシャルプロジェクト](references/16.スペシャルプロジェクト.md) | `requirements`、`on_success`、`abort_trigger` |
 
----
+### 追加で読むべき reference
 
-## ツール (scripts/)
+| トピック | リファレンス | 読むタイミング |
+|---|---|---|
+| 実装規約と上書き原則 | [17.実装規約と上書き原則](references/17.実装規約と上書き原則.md) | どのファイルに置くか、どこまで上書きするか迷うとき |
+| shared logic の設計 | [18.scripted_effects・scripted_triggers・inline_scripts](references/18.scripted_effects・scripted_triggers・inline_scripts.md) | 共通化、再利用、パラメータ化を考えるとき |
+| 経済カテゴリと zones | [19.経済カテゴリ・triggered_modifier・zones](references/19.経済カテゴリ・triggered_modifier・zones.md) | jobs/buildings/districts の出力や 4.0 zone 設計を触るとき |
+| 高位システムの入口 | [20.高度システム索引](references/20.高度システム索引.md) | situation、megastructure、component、system initializer を触るとき |
 
-Python 3.10+、外部依存なし。トリガー/エフェクト/スコープ/列挙型の検証に使用。
+## 実務ルール
 
-### 1. バージョン情報
-
-```bash
-python scripts/get_stellaris_version.py --minimal
-# → Stellaris 4.2.3 (Build 21132326)
-```
-
-### 2. 要素の存在確認 (Level 1 - 軽量)
-
-```bash
-# 要素の存在チェック（最も軽量）
-python scripts/fetch_cwtools_index.py --check has_technology
-# → {"exists": true, "categories": ["trigger"]}
-
-# パターンでフィルタ
-python scripts/fetch_cwtools_index.py --category effect --filter "create_*"
-
-# カテゴリ概要
-python scripts/fetch_cwtools_index.py --summary
-```
-
-### 3. 要素の詳細取得 (Level 2/3)
-
-```bash
-# シグネチャ（Level 2）
-python scripts/fetch_cwtools_element.py effect create_fleet
-
-# フル定義（Level 3）
-python scripts/fetch_cwtools_element.py effect create_fleet --full
-
-# スコープ情報
-python scripts/fetch_cwtools_element.py scope Country
-
-# 列挙型の値
-python scripts/fetch_cwtools_element.py enum leader_classes
-```
-
-### 4. 横断検索
-
-```bash
-# キーワード検索（全カテゴリ）
-python scripts/search_cwtools.py fleet --limit 10
-
-# 関連要素検索
-python scripts/search_cwtools.py create_fleet --category effect --related
-```
-
----
-
-## 使用パターン
-
-### Mod要素を書く前に確認
-
-```bash
-# 1. 存在確認（軽量）
-python scripts/fetch_cwtools_index.py --check has_technology
-
-# 2. 構文確認（必要時のみ）
-python scripts/fetch_cwtools_element.py trigger has_technology
-```
-
-### 正確なパラメータを知りたい
-
-```bash
-# シグネチャで概要を見て
-python scripts/fetch_cwtools_element.py effect add_modifier
-
-# 複雑なら完全定義
-python scripts/fetch_cwtools_element.py effect add_modifier --full
-```
-
-### 名前がわからない
-
-```bash
-# キーワードで検索
-python scripts/search_cwtools.py population --limit 10
-
-# 類似要素を探す
-python scripts/search_cwtools.py create_army --category effect --related
-```
-
----
-
-## Progressive Disclosure
-
-| 情報量 | コマンド | トークン目安 |
-|--------|---------|-------------|
-| 最小 | `--check NAME` | ~50 |
-| 一覧 | `--filter "pattern*"` | ~100-500 |
-| 概要 | `element.py cat NAME` | ~200 |
-| 完全 | `element.py cat NAME --full` | ~500+ |
-
----
-
-## キャッシュ
-
-データは `~/.cache/stellaris-modding-skill/` に24時間キャッシュ。
-
-```bash
-python scripts/github_fetcher.py cache-info   # 状態確認
-python scripts/github_fetcher.py clear-cache  # クリア
-```
+- `scope`、`trigger`、`effect` が曖昧なら、先に基礎 reference を読む。
+- 頻繁に発火するイベントは `is_triggered_only = yes` と `pre_triggers` を優先する。
+- `MTTH` や重いポーリングより、`on_action`、遅延イベント、shared logic を優先する。
+- 似た定義を複製する前に、`convert_to`、`technology_swap`、`swappable_data`、`scripted_effects`、`scripted_triggers`、`inline_script` で吸収できないか考える。
+- jobs/buildings/districts の出力変更は、個別定義だけでなく経済カテゴリの継承も確認する。
+- `triggered_*_modifier` はツールチップ表示と実適用がズレやすいので、必要なら `custom_tooltip` で補足する。
+- 外部資料がない限り、この skill では「bundled references に書いてあること」だけを根拠に結論を組み立てる。
